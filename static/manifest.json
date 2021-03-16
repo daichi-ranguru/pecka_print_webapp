@@ -1,0 +1,26 @@
+{
+	"name": "Sapper TailwindCSS Template",
+	"short_name": "Sapper TailwindCSS TS",
+	"display": "standalone",
+	"background_color": "#ffffff",
+	"theme_color": "#ff3c00",
+	"start_url": "/",
+	"icons": [
+		{
+      "src": "/android-chrome-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/android-chrome-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    },
+    {
+      "src": "/maskable-icon.png",
+      "sizes": "196x196",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+	]
+}

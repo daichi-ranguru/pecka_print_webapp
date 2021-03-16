@@ -1,0 +1,20 @@
+name: Pecka print webapp
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    name: Pecka print webapp
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@master
+      - id: deploy
+        name: Deploy to dokku
+        uses: idoberko2/dokku-deploy-github-action@v1
+        with:
+            ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+            dokku-host: '64.227.113.226'
+            app-name: 'pecka_print_webapp'
