@@ -18,3 +18,4 @@ jobs:
             ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
             dokku-host: '64.227.113.226'
             app-name: 'pecka_print_webapp'
+            remote-branch: 'main'
