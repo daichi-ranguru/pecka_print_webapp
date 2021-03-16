@@ -23,7 +23,7 @@
     appStore.increment(data)
   }}>
   <div class="text-left w-4/6">
-    <span class="block text-6xl leading-tight"> {translations[data].collumn} </span>
-    <span class="block text-2xl"> {translations[data].type} </span>
+    <span class="block text-4xl sm:text-6xl leading-tight"> {translations[data].collumn} </span>
+    <span class="block text-xl sm:text-2xl"> {translations[data].type} </span>
   </div>
 </button>

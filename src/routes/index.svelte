@@ -60,6 +60,17 @@
       display: none !important;
     }
   }
+
+  .calcul {
+    height: auto;
+    margin-bottom: 1em;
+  }
+  @media screen and (min-width: 500px) {
+    .calcul {
+      height: 8rem;
+      margin-bottom: 0;
+    }
+  }
 </style>
 
 <SEO {title} />
@@ -72,7 +83,11 @@
         <div class="relative overflow-auto h-full z-0" id="soucet-child">
           {#each Object.keys($appStore) as item}
             <div class="flex justify-between align-middle" in:fade={{ duration: 100 }} out:fade={{ duration: 100 }}>
-              <p class="text-4xl">{$appStore[item]}x {translations[item].type} {translations[item].collumn}</p>
+              <p class="text-3xl sm:text-4xl">
+                {$appStore[item]}x
+                {translations[item].type}
+                {translations[item].collumn}
+              </p>
               <div class="flex align-middle">
                 <button class="text-red-600 mx-2 px-2 text-lg rounded-full" on:click={() => appStore.decrement(item)}>
                   <svg
@@ -128,14 +143,15 @@
           {/if}
         </div>
       </div>
-      <div class="mx-10 uppercase  border-dashed border-t-8 border-blue-600 pt-5 text-5xl" style="height: 8rem;">
+      <div class="mx-10 uppercase  border-dashed border-t-8 border-blue-600 pt-5 text-5xl calcul">
         Celkem:
         <span class="font-bold">550Kč</span>
       </div>
     </div>
     <div class="grid grid-cols-1 h-32">
       <button
-        class="bg-green-500 rounded-3xl my-4 lg:mx-4 text-3xl text-white font-bold shadow-lg hlavni active:scale-90 active:shadow-sm transform duration-150 ease-in-out"
+        class="{Object.keys($appStore).length === 0 ? 'opacity-50' : ''} bg-green-500 rounded-3xl my-4 lg:mx-4 text-3xl text-white font-bold shadow-lg hlavni active:scale-90 active:shadow-sm transform duration-150 ease-in-out"
+        disabled={Object.keys($appStore).length === 0}
         on:click={tryToPrint}>Tisk</button>
     </div>
   </div>
