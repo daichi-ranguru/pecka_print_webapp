@@ -19,44 +19,13 @@
 </script>
 
 <style>
-  #soucet {
-    flex-basis: calc(100% - 4rem - 8rem);
-  }
-  #soucet::before,
-  #soucet::after {
-    content: '';
-    position: absolute;
-    display: block;
-    width: 100%;
-    height: 30px;
-    pointer-events: none;
-    z-index: 10;
+  @media screen and (min-width: 500px) {
+    #soucet {
+      flex-basis: calc(100% - 4rem - 8rem);
+      height: calc(100% - 4rem - 8rem);
+    }
   }
 
-  #soucet::before {
-    top: 0;
-    background: rgb(237, 242, 247);
-    background: linear-gradient(
-      180deg,
-      rgba(237, 242, 247, 1) 0%,
-      rgba(237, 242, 247, 0.7) 51%,
-      rgba(237, 242, 247, 0) 100%
-    );
-  }
-
-  #soucet::after {
-    bottom: 0;
-    background: rgb(237, 242, 247);
-    background: linear-gradient(
-      0deg,
-      rgba(237, 242, 247, 1) 0%,
-      rgba(237, 242, 247, 0.7) 51%,
-      rgba(237, 242, 247, 0) 100%
-    );
-  }
-  #soucet-child {
-    padding: 20px 0;
-  }
   button.hlavni {
     outline: 0 !important;
   }
@@ -77,19 +46,28 @@
       margin-bottom: 0;
     }
   }
+
+  @media screen and (min-width: 1024px) {
+    .soucet-wrap {
+      max-height: calc(100vh - 192px);
+    }
+  }
 </style>
 
 <SEO {title} />
 <div class="lg:flex lg:flex-flow lg:h-screen w-full lg:w-screen noprint ">
   <Buttons />
   <div class="m-2 sm:m-10 lg:m-0 lg:w-3/6 2xl:w-2/6 py-10 lg:pl-6 flex flex-col">
-    <div class="rounded-3xl lg:rounded-l-3xl bg-gray-200 h-full flex flex-col justify-between">
+    <div class="rounded-3xl lg:rounded-l-3xl bg-gray-200 h-full flex flex-col justify-between soucet-wrap">
       <h1 class="font-bold text-3xl sm:text-5xl mx-5 sm:mx-10 mt-5 uppercase" style="height: 4rem;">Součet</h1>
-      <div id="soucet" style="height: calc(100% - 4rem - 8rem);" class="relative mx-5 sm:mx-10">
+      <div id="soucet" class="relative mx-5 sm:mx-10 pb-10 lg:pb-2 sm:pt-4">
         <div class="relative overflow-auto h-full z-0" id="soucet-child">
           {#each Object.keys($appStore) as item}
-            <div class="flex justify-between align-middle" in:fade={{ duration: 100 }} out:fade={{ duration: 100 }}>
-              <p class="text-xl sm:text-4xl">
+            <div
+              class="flex justify-between align-middle mt-3 sm:mt-0"
+              in:fade={{ duration: 100 }}
+              out:fade={{ duration: 100 }}>
+              <p class="text-2xl sm:text-4xl">
                 {$appStore[item]}x
                 {translations[item].type}
                 {translations[item].collumn}
@@ -99,7 +77,7 @@
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     fill="currentColor"
-                    class="w-5 h-5 sm:w-8 sm:h-8 bi bi-dash-circle active:scale-90 transform duration-150 ease-in-out"
+                    class="w-6 h-6 sm:w-8 sm:h-8 bi bi-dash-circle active:scale-90 transform duration-150 ease-in-out"
                     viewBox="0 0 16 16">
                     <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
                     <path d="M4 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 8z" />
@@ -109,7 +87,7 @@
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     fill="currentColor"
-                    class="w-5 h-5 sm:w-8 sm:h-8 bi bi-trash active:scale-90 transform duration-150 ease-in-out rounded-full"
+                    class="w-6 h-6 sm:w-8 sm:h-8 bi bi-trash active:scale-90 transform duration-150 ease-in-out rounded-full"
                     viewBox="0 0 16 16">
                     <path
                       d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z" />
