@@ -18,12 +18,14 @@
 </style>
 
 <button
-  class="rounded-2xl flex items-center justify-center text-white text-2xl font-extrabold py-8 active:scale-90 active:shadow-sm shadow-lg transform duration-150 ease-in-out  {conditClasses}"
+  class="rounded-2xl flex items-center justify-center text-white text-2xl font-extrabold py-4 sm:py-8 active:scale-90 active:shadow-sm shadow-lg transform duration-150 ease-in-out  {conditClasses}"
   on:click={() => {
     appStore.increment(data)
   }}>
   <div class="text-left w-4/6">
-    <span class="block text-4xl sm:text-6xl leading-tight"> {translations[data].collumn} </span>
-    <span class="block text-xl sm:text-2xl"> {translations[data].type} </span>
+    <span class="block text-3xl sm:text-6xl leading-tight text-center sm:text-left">
+      {translations[data].collumn}
+    </span>
+    <span class="block text-lg sm:text-2xl"> {translations[data].type} </span>
   </div>
 </button>

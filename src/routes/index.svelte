@@ -84,12 +84,12 @@
   <Buttons />
   <div class="m-2 sm:m-10 lg:m-0 lg:w-3/6 2xl:w-2/6 py-10 lg:pl-6 flex flex-col">
     <div class="rounded-3xl lg:rounded-l-3xl bg-gray-200 h-full flex flex-col justify-between">
-      <h1 class="font-bold text-5xl mx-10 mt-5 uppercase" style="height: 4rem;">Součet</h1>
-      <div id="soucet" style="height: calc(100% - 4rem - 8rem);" class="relative mx-10">
+      <h1 class="font-bold text-3xl sm:text-5xl mx-5 sm:mx-10 mt-5 uppercase" style="height: 4rem;">Součet</h1>
+      <div id="soucet" style="height: calc(100% - 4rem - 8rem);" class="relative mx-5 sm:mx-10">
         <div class="relative overflow-auto h-full z-0" id="soucet-child">
           {#each Object.keys($appStore) as item}
             <div class="flex justify-between align-middle" in:fade={{ duration: 100 }} out:fade={{ duration: 100 }}>
-              <p class="text-3xl sm:text-4xl">
+              <p class="text-xl sm:text-4xl">
                 {$appStore[item]}x
                 {translations[item].type}
                 {translations[item].collumn}
@@ -98,10 +98,8 @@
                 <button class="text-red-600 mx-2 px-2 text-lg rounded-full" on:click={() => appStore.decrement(item)}>
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
-                    width="35"
-                    height="35"
                     fill="currentColor"
-                    class="bi bi-dash-circle active:scale-90 transform duration-150 ease-in-out"
+                    class="w-5 h-5 sm:w-8 sm:h-8 bi bi-dash-circle active:scale-90 transform duration-150 ease-in-out"
                     viewBox="0 0 16 16">
                     <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
                     <path d="M4 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 8z" />
@@ -110,10 +108,8 @@
                 <button class="text-red-600 mx-2 px-2 text-lg" on:click={() => appStore.delete(item)}>
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
-                    width="35"
-                    height="35"
                     fill="currentColor"
-                    class="bi bi-trash active:scale-90 transform duration-150 ease-in-out rounded-full"
+                    class="w-5 h-5 sm:w-8 sm:h-8 bi bi-trash active:scale-90 transform duration-150 ease-in-out rounded-full"
                     viewBox="0 0 16 16">
                     <path
                       d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z" />
@@ -149,7 +145,7 @@
           {/if}
         </div>
       </div>
-      <div class="mx-10 uppercase  border-dashed border-t-8 border-blue-600 pt-5 text-5xl calcul">
+      <div class="mx-5 sm:mx-10 uppercase  border-dashed border-t-8 border-blue-600 pt-5 text-2xl sm:text-5xl calcul">
         Celkem:
         <span class="font-bold">{nf.format(finalPrice)}Kč</span>
       </div>
