@@ -2,9 +2,15 @@
   import { appStore } from '~/utils/store.ts'
   import translations from '../utils/translations'
 
+  $: s = ary => ary.map(item => translations[item].price * $appStore[item]).reduce((acu, val) => acu + val, 0)
+
   $: abRes = Object.keys($appStore).filter(val => val.startsWith('ab-'))
   $: aRes = Object.keys($appStore).filter(val => val.startsWith('a-'))
   $: bRes = Object.keys($appStore).filter(val => val.startsWith('b-'))
+
+  $: abValue = s(abRes)
+  $: aValue = s(aRes)
+  $: bValue = s(bRes)
 
   function getToday() {
     const today = new Date()
@@ -14,6 +20,8 @@
 
     return `${dd}.${mm}.${yyyy}`
   }
+
+  const nf = new Intl.NumberFormat()
 </script>
 
 <style>
@@ -75,7 +83,7 @@
         <hr class="m-0 border-black" />
         <div class="flex justify-between">
           <p class="text-black date">{getToday()}</p>
-          <p class="font-bold">1.500 Kč</p>
+          <p class="font-bold">{nf.format(abValue)} Kč</p>
         </div>
       </div>
     </div>
@@ -95,7 +103,7 @@
         <hr class="m-0 border-black" />
         <div class="flex justify-between">
           <p class="text-black date">{getToday()}</p>
-          <p class="font-bold">1.500 Kč</p>
+          <p class="font-bold">{nf.format(aValue)} Kč</p>
         </div>
       </div>
     </div>
@@ -115,7 +123,7 @@
         <hr class="m-0 border-black" />
         <div class="flex justify-between">
           <p class="text-black date">{getToday()}</p>
-          <p class="font-bold">1.500 Kč</p>
+          <p class="font-bold">{nf.format(bValue)} Kč</p>
         </div>
       </div>
     </div>

@@ -10,6 +10,12 @@
   function tryToPrint() {
     window.print()
   }
+
+  const nf = new Intl.NumberFormat()
+
+  $: finalPrice = Object.keys($appStore)
+    .map(item => translations[item].price * $appStore[item])
+    .reduce((acu, val) => acu + val, 0)
 </script>
 
 <style>
@@ -145,7 +151,7 @@
       </div>
       <div class="mx-10 uppercase  border-dashed border-t-8 border-blue-600 pt-5 text-5xl calcul">
         Celkem:
-        <span class="font-bold">550Kč</span>
+        <span class="font-bold">{nf.format(finalPrice)}Kč</span>
       </div>
     </div>
     <div class="grid grid-cols-1 h-32">
